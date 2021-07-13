@@ -31,17 +31,19 @@ var saveSearch = function () {
 
 var getCityWeather = function () {
     var apikey = "034e0d3feab0beaed53510b99ffd11c3"
-    var apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid={API key}`
-
+    var apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`
+console.log(apiURL)
     fetch(apiURL)
-        .then(function (respose) {
+        .then(function (response) {
             response.json().then(function (data) {
+                console.log(data)
                 displayWeather(data, city);
             });
         });
 };
 
 var displayWeather = function (weather, searchCity) {
+    console.log(weather)
     //clear old content
     weatherContainerEl.textContent = "";
     citySearchInputEl.textContent = searchCity;

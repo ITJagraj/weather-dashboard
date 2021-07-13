@@ -5,7 +5,7 @@ var cityInputEl = document.querySelector("#city");
 var weatherContainerEl = document.querySelector("#current-weather-container");
 var citySearchInputEl = document.querySelector("#searched-city");
 var forecastTitle = document.querySelector("#forecast");
-var forecastContainerEl = document.querySelector("#fiveday-container");
+var forecastContainerEl = document.querySelector("#five-day-container");
 var pastSearchButtonEl = document.querySelector("#past-search-buttons");
 var searchBtnEl = document.querySelector(".searchBtn");
 
@@ -31,7 +31,7 @@ var saveSearch = function () {
 };
 
 
-var getCityWeather = function () {
+var getCityWeather = function (city) {
     var apikey = "034e0d3feab0beaed53510b99ffd11c3"
     var apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`
     console.log(apiURL)
@@ -54,8 +54,8 @@ var displayWeather = function (weather, searchCity) {
 
 //create date element
 var currentDate = document.createElement("span")
-// currentDate.textContent = "(" + SVGAnimateMotionElement(weather.dt.value).format("MMMM D, YYYY") + ") ";
-// citySearchInputEl.appendChild(currentDate);
+currentDate.textContent = "(" + SVGAnimateMotionElement(weather.dt.value).format("MMMM D, YYYY") + ") ";
+citySearchInputEl.appendChild(currentDate);
 
 //create an image element
 var weatherIcon = document.createElement("img")

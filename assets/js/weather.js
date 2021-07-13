@@ -7,10 +7,12 @@ var citySearchInputEl = document.querySelector("#searched-city");
 var forecastTitle = document.querySelector("#forecast");
 var forecastContainerEl = document.querySelector("#fiveday-container");
 var pastSearchButtonEl = document.querySelector("#past-search-buttons");
+var searchBtnEl = document.querySelector(".searchBtn");
 
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
+    console.log("button")
     var city = cityInputEl.value.trim();
     if (city) {
         getCityWeather(city);
@@ -21,7 +23,7 @@ var formSubmitHandler = function (event) {
         alert("Please enter a city");
     }
     saveSearch();
-    pastSearch(city);
+    // pastSearch(city);
 }
 
 var saveSearch = function () {
@@ -32,7 +34,7 @@ var saveSearch = function () {
 var getCityWeather = function () {
     var apikey = "034e0d3feab0beaed53510b99ffd11c3"
     var apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`
-console.log(apiURL)
+    console.log(apiURL)
     fetch(apiURL)
         .then(function (response) {
             response.json().then(function (data) {
@@ -52,42 +54,42 @@ var displayWeather = function (weather, searchCity) {
 
 //create date element
 var currentDate = document.createElement("span")
-currentDate.textContent = "(" + SVGAnimateMotionElement(weather.dt.value).format("MMMM D, YYYY") + ") ";
-citySearchInputEl.appendChild(currentDate);
+// currentDate.textContent = "(" + SVGAnimateMotionElement(weather.dt.value).format("MMMM D, YYYY") + ") ";
+// citySearchInputEl.appendChild(currentDate);
 
 //create an image element
 var weatherIcon = document.createElement("img")
-weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
-citySearchInputEl.appendChild(weatherIcon);
+// weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
+// citySearchInputEl.appendChild(weatherIcon);
 
 
 //create a span element to hold temperature data
 var temperatureEl = document.createElement("span");
-temperatureEl.textContent = "Temperature: " + weather.main.temp + " °F";
-temperatureEl.classList = "list-group-item"
+// temperatureEl.textContent = "Temperature: " + weather.main.temp + " °F";
+// temperatureEl.classList = "list-group-item"
 
 //create a span element to hold Humidity data
 var humidityEl = document.createElement("span");
-humidityEl.textContent = "Humidity: " + weather.main.humidity + " %";
-humidityEl.classList = "list-group-item"
+// humidityEl.textContent = "Humidity: " + weather.main.humidity + " %";
+// humidityEl.classList = "list-group-item"
 
 //create a span element to hold Wind data
 var windSpeedEl = document.createElement("span");
-windSpeedEl.textContent = "Wind Speed: " + weather.wind.speed + " MPH";
-windSpeedEl.classList = "list-group-item"
+// windSpeedEl.textContent = "Wind Speed: " + weather.wind.speed + " MPH";
+// windSpeedEl.classList = "list-group-item"
 
 //append to container
-weatherContainerEl.appendChild(temperatureEl);
+// weatherContainerEl.appendChild(temperatureEl);
 
 //append to container
-weatherContainerEl.appendChild(humidityEl);
+// weatherContainerEl.appendChild(humidityEl);
 
 //append to container
-weatherContainerEl.appendChild(windSpeedEl);
+// weatherContainerEl.appendChild(windSpeedEl);
 
-var lat = weather.coord.lat;
-var lon = weather.coord.lon;
-getUvIndex(lat, lon)
+// var lat = weather.coord.lat;
+// var lon = weather.coord.lon;
+// getUvIndex(lat, lon)
 
 var getUvIndex = function (lat, lon) {
     var apiKey = "844421298d794574c100e3409cee0499"
@@ -214,6 +216,6 @@ var pastSearchHandler = function (event) {
 
 // pastSearch();
 
-cityFormEl.addEventListener("submit", formSumbitHandler);
-pastSearchButtonEl.addEventListener("click", pastSearchHandler);
+searchBtnEl.addEventListener("click", formSubmitHandler);
+// pastSearchButtonEl.addEventListener("click", pastSearchHandler);
 

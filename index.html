@@ -1,43 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Weather Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/80833262c1.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Weather App</title>
 </head>
+
 <body>
-    <header class = "bg-dark text-white text-center p-2">
+
+    <header class="header">
         <h1>Weather Dashboard</h1>
     </header>
-    <main class="container-fluid">
-        <div class = "row">
-            <div class="col-12 col-md-3 p-2 search-column">
-                <form class = "border p-2" id = "city-search-form">
-                    <h4>Search for a City</h2>
-                    <input id="city" type = "text" autofocus = "true" class = "form-input"/>
-                    <button class = "btn btn-primary" type = "submit">Search</button>
-                </form>
-                <div class = "past-search border" id = "past-search-buttons"></div>
+
+    <div class="container">
+        <div class="search">
+            <div class="row">
+                <h1>Search for a City:</h1>
             </div>
-            <div class="col-12 col-md-9">
-                <div class = "row border selected-city" id = "current-forecast">
-                    <div class = "col-12">
-                        <h2 id="searched-city"></h2>
-                        <div id = "current-weather-container" class = "list-group"></div>
-                    </div>  
+            <div class="row">
+                <input type="text" class="searchInput" id="city" placeholder="Toronto">
+                <button type="submit" class="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="historyItems"></div>
+        </div>
+        <div class="col-two-container">
+            <div class="forecast">
+                <div class="row">
+                    <h1 class="cityName">City Name</h1>
+                    <h1 class="currentDate"></h1>
+                    <img class="weatherIcon"></img>
                 </div>
-                <div class = "row border" id = "five-day-forecast">
-                        <h2 class= "col-12" id = "forecast"></h2>
-                        <div class = "d-flex" id = "fiveday-container"></div>
-                </div>  
+                <div class="row">
+                    <p class="temp">Temperature:</p>
+                </div>
+                <div class="row">
+                    <p class="humidity">Humidity:</p>
+                </div>
+                <div class="row">
+                    <p class="windSpeed">Wind Speed:</p>
+                </div>
+                <div class="row">
+                    <p class="uvIndex">UV Index:</p>
+                </div>
+            </div>
+
+            <div class="five-day-container">
+                <h1>5-Day Forecast:</h1>
+                <div class="card-row">
+                </div>
             </div>
         </div>
-    </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+    </div>
+
 </body>
+<script src="assets/js/weather.js"></script>
+
 </html>

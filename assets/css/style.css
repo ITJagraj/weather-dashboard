@@ -145,6 +145,10 @@ li:last-child {
     line-height: 50%;
     margin: 5px 5px 5px 0px;
 }
+.border {
+    border-style: solid;
+    border-color: yellowgreen;
+}
 
 .row * {
     margin-right: 5px;

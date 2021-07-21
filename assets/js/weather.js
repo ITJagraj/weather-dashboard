@@ -53,9 +53,9 @@ var displayWeather = function (weather, searchCity) {
 
 
 //create date element
-var currentDate = document.createElement("span")
-currentDate.textContent = "(" + SVGAnimateMotionElement(weather.dt.value).format("MMMM D, YYYY") + ") ";
-citySearchInputEl.appendChild(currentDate);
+// var currentDate = document.createElement("span")
+// currentDate.textContent = "(" + SVGAnimateMotionElement(weather.dt.value).format("MMMM D, YYYY") + ") ";
+// citySearchInputEl.appendChild(currentDate);
 
 //create an image element
 var weatherIcon = document.createElement("img")
@@ -132,12 +132,16 @@ var displayUvIndex = function (index) {
 }
 
 var get5Day = function (city) {
+    console.log(city);
     var apiKey = "844421298d794574c100e3409cee0499"
     var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`
+    console.log(apiURL);
 
     fetch(apiURL)
         .then(function (response) {
+            console.log(response);
             response.json().then(function (data) {
+                console.log(data);
                 display5Day(data);
             });
         });
@@ -150,6 +154,7 @@ var display5Day = function (weather) {
     var forecast = weather.list;
     for (var i = 5; i < forecast.length; i = i + 8) {
         var dailyForecast = forecast[i];
+        console.log(dailyForecast);
 
 
         var forecastEl = document.createElement("div");
@@ -159,7 +164,7 @@ var display5Day = function (weather) {
 
         //create date element
         var forecastDate = document.createElement("h5")
-        forecastDate.textContent = moment.unix(dailyForecast.dt).format("MMM D, YYYY");
+        forecastDate.textContent =dailyForecast.dt_txt;// moment.unix(dailyForecast.dt).format("MMM D, YYYY");
         forecastDate.classList = "card-header text-center"
         forecastEl.appendChild(forecastDate);
 
